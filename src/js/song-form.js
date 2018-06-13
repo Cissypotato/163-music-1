@@ -3,7 +3,6 @@
         el:".page>main",
         template:`
             <form action="post" class="musicForm">
-                <h2>新建歌曲</h2>
                 <div class="row">
                     <label>
                         歌名
@@ -37,10 +36,15 @@
                 html=html.replace(`--${string}--`,data[string] ||'')
             })
             $(this.el).html(html)
+            if(data.id){
+                $(this.el).prepend('<h2>编辑歌曲</h2>')
+            }else{
+                $(this.el).prepend('<h2>新建歌曲</h2>')
+            }
         },
         reset(){
             this.render()
-        }
+        },
         
     }
 
@@ -76,6 +80,16 @@
             window.eventHub.on('upload',(data)=>{
                 this.model.data=data
                 this.reset(this.model.data)
+            })
+            window.eventHub.on('select',(data)=>{
+                this.model.data=data
+                this.view.render(this.model.data)
+            })
+            window.eventHub.on('new',()=>{
+                this.model.data={
+                    name:'',singer:'',url:"",id:''
+                }
+                this.view.render(this.model.data)
             })
         },
         reset(data){
