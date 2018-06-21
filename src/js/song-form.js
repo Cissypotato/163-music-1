@@ -3,25 +3,28 @@
         el:".page>main",
         template:`
             <form action="post" class="musicForm">
-                <div class="row">
-                    <label>
-                        歌名
+                <div class="inputs">
+                    <div class="row">
+                        <label>
+                            歌名                        
+                        </label>
                         <input name="name" type="text" value="--name--">
-                    </label>
-                </div>
-                <div class="row">
-                    <label>
-                        歌手
+                    </div>
+                    <div class="row">
+                        <label>
+                            歌手                        
+                        </label>
                         <input name="singer" type="text" value="--singer--">
-                    </label>
-                </div>
-                <div class="row">
-                    <label>
-                        外链
+                    </div>
+                    <div class="row">
+                        <label>
+                            外链                        
+                        </label>
                         <input name="url" type="text" value="--url--">
-                    </label>
+                    </div>
                 </div>
-                <div class="row">
+                
+                <div class="submitButton">
                     <button type="submit">保存</button>
                 </div>
             </form>           
@@ -36,11 +39,11 @@
                 html=html.replace(`--${string}--`,data[string] ||'')
             })
             $(this.el).html(html)
-            if(data.id){
-                $(this.el).prepend('<h2>编辑歌曲</h2>')
-            }else{
-                $(this.el).prepend('<h2>新建歌曲</h2>')
-            }
+            // if(data.id){
+            //     $(this.el).prepend('<h2>编辑歌曲</h2>')
+            // }else{
+            //     $(this.el).prepend('<h2>新建歌曲</h2>')
+            // }
         },
         reset(){
             this.render()

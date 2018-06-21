@@ -5,10 +5,12 @@
         新建歌曲
         `,
         render(data){
+
             $(this.el).html(this.template)
         }
     }
-    let model={}
+    let model={
+    }
     let controller={
         init(view,model){
             this.view=view
