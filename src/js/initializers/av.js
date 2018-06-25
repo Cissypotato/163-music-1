@@ -7,5 +7,7 @@
     appId: APP_ID,
     appKey: APP_KEY
     });
+    var Song = AV.Object.extend('Song');
+    var Song = new Song(); 
 }
 
