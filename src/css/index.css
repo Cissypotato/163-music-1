@@ -32,7 +32,10 @@ header>nav>ul>li{width: 33.3%;height: 100%;text-align: center;}
 header>nav>ul>li>div{height: 100%;padding: 0 5px;line-height:0.107rem;display: inline-block; }
 header>nav>ul>li>div.active{color: #d33a31;border-bottom: 2px solid #d33a31;}
 
-.remdPlaylist{margin-top: 0.331rem;padding-bottom:24px; }
+.page{display: none}
+.page.active{display: block;margin-top: 0.331rem;}
+
+.remdPlaylist{padding-bottom:24px; }
 .remdPlaylist>h2{font-size: 17px;padding-left: 9px;margin-bottom: 14px;height: 20px;line-height: 20px;position: relative;
   }
 .remdPlaylist>h2::before{content:'';position: absolute;width: 2px;height: 16px;background: #d33a31;top: 1px;left: 0}
