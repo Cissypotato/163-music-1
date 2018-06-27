@@ -41,7 +41,7 @@
                     return {id:song.id,...song.attributes}
                 })
                 return songs
-                })
+            })
         }
     }
 
