@@ -11,15 +11,27 @@ body{font:14px/1.5 Helvetica,sans-serif;}
 
 
 
-.songPage{width: 1rem;height: 100vh;background: #888 }
+.songPage{width: 1rem;height: 100vh;position: relative}
+.songPage::after{content: '';display: block;width: 100%;height: 100%;top: 0;left: 0;background: url(../images/song1.jpg);
+    background-size: cover;filter: blur(5px);position: absolute;z-index: -1;}
 
-.discWrap{width: 100%;height: 1.587rem;border: 1px solid pink;position: relative}
-.discWrap>.logo{position: absolute}
-.discWrap>.discArea{margin-top: 0.067rem;width: 100%;border: 1px solid red;height: 0.976rem;padding-top: 0.187rem}
+.discWrap{width: 100%;height: 1.587rem;position: relative}
+.discWrap::before{content: '';display: block;width: 0.256rem;height: 0.365rem;position: absolute;background: url(../images/needle.png) no-repeat;
+    background-position: center center;background-size: contain;left: 155px;
+    z-index: 3}
+.discWrap>.logo{position: absolute;top: 6px;left: 8px;color: #fff;font-size: 16px;}
+.discWrap>.discArea{margin-top: 10px;width: 100%;height: 0.976rem;padding-top: 0.187rem}
 .disc{width: 0.789rem;height: 0.789rem;background:url(../images/disc.png);background-position: center center;background-size: cover;
-    border: 1px solid green;margin: 0 auto;display: flex;align-items: center;}
-.discCover{width: 0.512rem;height: 0.512rem;border-radius: 50%;margin: 0 auto;border: 1px solid red;
+    margin: 0 auto;display: flex;align-items: center;}
+.discCover{width: 0.512rem;height: 0.512rem;border-radius: 50%;margin: 0 auto;
     background:url(../images/song1.jpg);background-position: center center;background-size: cover;display: flex;
     justify-content: center;align-items: center;}
 .discCover>.playBtn{display:flex;width: 0.149rem;height: 0.149rem;justify-content: center;align-items: center}
-.playBtn>svg.icon{}
+.playBtn>svg.icon{width:0.149rem;height: 0.149rem;fill: #ddd }
+
+
+.footer{width: 100%;padding:0 8px;display: flex;justify-content: space-between;}
+.footer>span{display: inline-block;width: 47%;text-align: center;
+    height: 40px;line-height: 40px;font-size: 18px;border-radius: 40px;}
+.footer>span.open{color: #d33a31;border: 1px solid  #d33a31}
+.footer>span.download{background: #d33a31;color: #fff;}
