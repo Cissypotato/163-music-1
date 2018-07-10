@@ -1,6 +1,6 @@
 {
     let view={
-        el:".page>main",
+        el:".formWrapper",
         template:`
             <form action="post" class="musicForm">
                 <div class="inputs">
@@ -22,18 +22,24 @@
                         </label>
                         <input name="url" type="text" value="--url--">
                     </div>
+                    <div class="row">
+                        <label>
+                           封面                        
+                        </label>
+                        <input name="cover" type="text" value="--cover--">
+                    </div>
                 </div>
                 
                 <div class="submitButton">
                     <button type="submit">保存</button>
-                </div>
-            </form>           
+                </div>   
+            </form>       
         `,
         init(){
             this.$el=$(this.el)
         },
         render(data={}){
-            let palceHolder=['name','singer','url','id']
+            let palceHolder=['name','singer','url','id','cover']
             let html=this.template
             palceHolder.map((string)=>{
                 html=html.replace(`--${string}--`,data[string] ||'')
@@ -53,13 +59,14 @@
 
     let model={
         data:{
-            name:'',singer:'',url:"",id:''
+            name:'',singer:'',url:"",id:'',cover:''
         },
         update(data){
             var song = AV.Object.createWithoutData('Song', this.data.id);
             song.set('name', data.name);
             song.set('url', data.url);
             song.set('singer', data.singer);
+            song.set('cover', data.cover);
             return song.save()
                 .then((response)=>{
                     Object.assign(this.data,data)
@@ -72,6 +79,7 @@
             song.set('name', data.name);
             song.set('singer', data.singer);
             song.set('url', data.url);
+            song.set('cover', data.cover);
             return song.save().then( (newSong)=> {
                 let{id,attributes}=newSong
                 Object.assign(this.data,{id,...attributes})
@@ -98,7 +106,7 @@
             window.eventHub.on('new',(data)=>{
                 if(this.model.data.id){
                     this.model.data={
-                        name:'',singer:'',url:"",id:''
+                        name:'',singer:'',url:"",id:'',cover:''
                     }
                 }else{
                     Object.assign(this.model.data,data)
@@ -110,7 +118,7 @@
             this.view.render(data)
         },
         create(){
-            let needs='singer name url'.split(' ')
+            let needs='singer name url cover'.split(' ')
             let data={}
             needs.map((string)=>{
                 data[string]=this.view.$el.find(`[name="${string}"]`).val()
@@ -125,7 +133,7 @@
         },
         update(){
             
-            let needs='singer name url'.split(' ')
+            let needs='singer name url cover'.split(' ')
             let data={}
             needs.map((string)=>{
                 data[string]=this.view.$el.find(`[name="${string}"]`).val()

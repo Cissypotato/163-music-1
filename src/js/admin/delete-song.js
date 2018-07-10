@@ -1,8 +1,8 @@
 {
     let view={
-        el:".newSong",
+        el:".deleteSong",
         template:`
-        新建
+        删除
         `,
         render(data){
 
