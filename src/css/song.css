@@ -22,7 +22,7 @@ body{font:14px/1.5 Helvetica,sans-serif;}
 .discWrap::before{content: '';display: block;width: 0.256rem;height: 0.365rem;position: absolute;background: url(../images/needle.png) no-repeat;
     background-position: center center;background-size: contain;left: 155px;
     z-index: 3}
-/* .clickArea{width: 100%;height: 100%;position: absolute;top: 0;left: 0;pointer-events: none;} */
+/* .clickArea{width: 100%;height: 100%;position: absolute;top: 0;left: 0;pointer-events: none;background: #d33a31;z-index: 5} */
 .discWrap>.logo{position: absolute;top: 6px;left: 8px;color: #fff;font-size: 16px;}
 .discWrap>.discArea{margin-top: 10px;width: 100%;height: 0.976rem;padding-top: 0.187rem}
 .disc{width: 0.789rem;height: 0.789rem;background:url(../images/disc.png);background-position: center center;background-size: cover;
@@ -32,9 +32,12 @@ body{font:14px/1.5 Helvetica,sans-serif;}
 .discCover{width: 0.512rem;height: 0.512rem;border-radius: 50%;margin: 0 auto;
     background-position: center center;background-size: cover;display: flex;
     justify-content: center;align-items: center;}
-.discCover>.playBtn{display:flex;width: 0.149rem;height: 0.149rem;justify-content: center;align-items: center;visibility: hidden; z-index: 6}
+.discCover>.playBtn{display:flex;width: 0.149rem;height: 0.149rem;justify-content: center;align-items: center;display: none; z-index: 6}
 .playBtn>svg.icon{width:0.149rem;height: 0.149rem;fill: #ddd;}
-.playBtn.paused{visibility: visible;}
+.playBtn.paused{display: block}
+.discCover>.puaseBtn{display:flex;width: 0.149rem;height: 0.149rem;justify-content: center;align-items: center;display: block; z-index: 6}
+.puaseBtn>svg.icon{width:0.149rem;height: 0.149rem;fill: #ddd;}
+.puaseBtn.playing{display: none}
 
 
 .footer{width: 100%;padding:0 8px;display: flex;justify-content: space-between;}

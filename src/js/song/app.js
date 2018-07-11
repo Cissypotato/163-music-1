@@ -5,18 +5,28 @@
             let {song,status}=data
             $(this.el).css('background-image',`url(${song.cover})`)
             $(this.el).find('.discCover').css('background-image',`url(${song.cover})`)
-            $(this.el).find('audio').attr('src',song.url)
+            if($(this.el).find('audio').attr('src')!==song.url){
+                $(this.el).find('audio').attr('src',song.url)
+            }
+            
+            if(status==='playing'){
+                this.play()
+            }else{
+                this.puased()
+            }
         },
         play(){
             $(this.el).find('audio')[0].play()
             $(this.el).find('.disc').addClass('playing')
             $(this.el).find('.playBtn').removeClass('paused')
+            $(this.el).find('.puaseBtn').removeClass('playing')
             
         },
-        paused(){
+        puased(){
             $(this.el).find('audio')[0].pause()
             $(this.el).find('.disc').removeClass('playing')
-            $(this.el).find('.palyBtn').addClass('paused')
+            $(this.el).find('.playBtn').addClass('paused')
+            $(this.el).find('.puaseBtn').addClass('playing')
             
         },
 
@@ -30,7 +40,7 @@
                 url:'',
                 cover:''
             },
-            status:'playing'
+            status:'paused'
             
         },
         get(id){
@@ -56,27 +66,32 @@
             this.bindEvents()
         },
         bindEvents(){
-            console.log(2)
-            console.log($(this.view.el))
-            function qq() {
-                console.log(11)
-            }
-            qq()
-            let page =document.querySelector('.songPage')
-            let playBtn=document.querySelector('.playBtn')
-            $(playBtn).on('click',(e)=>{
-                e.stopPropagation()
+            
+            $(this.view.el).on('click','.playBtn',()=>{
+                this.model.data.status='playing'
+                this.view.render(this.model.data)
                 this.view.play()
-                console.log('paly')
             })
+            $(this.view.el).on('click','.puaseBtn',()=>{
+                this.model.data.status='puased'
+                this.view.render(this.model.data)
+                this.view.puased()
+            })
+            // let page =document.querySelector('.songPage')
+            // let playBtn=document.querySelector('.playBtn')
+            // $(playBtn).on('click',(e)=>{
+            //     e.stopPropagation()
+            //     this.view.play()
+            //     console.log('paly')
+            // })
 
         
-            $(page).on('click',(e)=>{
-                e.stopPropagation()
-                this.view.paused()
-                console.log('paused')
-            })
-            console.log(3)
+            // $(page).on('click',(e)=>{
+            //     e.stopPropagation()
+            //     this.view.paused()
+            //     console.log('paused')
+            // })
+            // console.log(3)
 
 
         },
