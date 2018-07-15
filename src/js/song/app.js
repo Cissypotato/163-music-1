@@ -5,8 +5,17 @@
             let {song,status}=data
             $(this.el).css('background-image',`url(${song.cover})`)
             $(this.el).find('.discCover').css('background-image',`url(${song.cover})`)
+            $(this.el).find('.lyricsWrap>h3').text(song.name)
             if($(this.el).find('audio').attr('src')!==song.url){
-                $(this.el).find('audio').attr('src',song.url)
+                let audio=$(this.el).find('audio').attr('src',song.url)
+                audio.on('ended',()=>{
+                    this.puased()
+                })
+                let audio1=$(this.el).find('audio').attr('src',song.url).get(0)
+                audio1.ontimeupdate=()=>{
+                   this.showlyrics(audio1.currentTime)
+                }
+
             }
             
             if(status==='playing'){
@@ -14,7 +23,40 @@
             }else{
                 this.puased()
             }
+            let {lyrics}=song
+            lyrics.split('\n').map((string)=>{
+                let p =document.createElement('p')
+                let regex=/\[([\d:.]+)\](.+)/
+                let matches=string.match(regex)
+                if (matches){
+                    p.textContent=matches[2]
+                    let time=matches[1]
+                    let part=time.split(':')
+                    let minutes=part[0]
+                    let seconds=part[1]
+                    let newTime=parseFloat(minutes,10)*60+parseFloat(seconds,10)
+                    p.setAttribute('data-time',newTime)
+                }else{
+                    p.textContent=string
+                }
+                 
+                $(this.el).find('.lyrics>.lines').append(p)
+            })
+            
         },
+        showlyrics(time){
+            let allP=$(this.el).find('.lyrics>.lines>p')
+            for(let i=0;i<allP.length;i++){
+                let currentTime=allP.eq(i).attr('data-time')
+                let nextTime=allP.eq(i+1).attr('data-time')
+                if(currentTime<=time && time<=nextTime){
+                    console.log(allP[i])
+                    break
+                }
+
+            }
+        }
+        ,
         play(){
             $(this.el).find('audio')[0].play()
             $(this.el).find('.disc').addClass('playing')
@@ -38,7 +80,8 @@
                 singer:'',
                 name:'',
                 url:'',
-                cover:''
+                cover:'',
+                
             },
             status:'paused'
             
@@ -46,6 +89,7 @@
         get(id){
             var query = new AV.Query('Song');
             return query.get(id).then((song )=> {
+                
                 Object.assign(this.data.song,{id:id,...song.attributes})
                 return song
             })
@@ -59,6 +103,7 @@
             this.model=model
             let id=this.getSongId()
             this.model.get(id).then(()=>{
+
                 this.view.render(this.model.data)
                 // this.view.play()
                 
