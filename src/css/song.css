@@ -16,7 +16,7 @@ body{font:14px/1.5 Helvetica,sans-serif;}
 
 .songPage{width: 100%;height: 100vh;position: relative;background-size: cover;}
 .songPage::after{content: '';display: block;width: 100%;height: 100%;top: 0;left: 0;background: rgba(0,0,0,0.4);
-    filter: blur(5px);position: absolute;overflow: hidden;z-index: -1;}
+    position: absolute;overflow: hidden;z-index: -1;;filter: blur(5px);}
 
 .discWrap{width: 100%;height: 1.587rem;position: relative;border: 1px solid green}
 .discWrap::before{content: '';display: block;width: 0.256rem;height: 0.365rem;position: absolute;background: url(../images/needle.png) no-repeat;
@@ -40,9 +40,11 @@ body{font:14px/1.5 Helvetica,sans-serif;}
 .puaseBtn.playing{display: none}
 
 .lyricsWrap{border: 1px solid red;padding: 10px 20px;text-align: center;height: 0.5253rem}
-.lyricsWrap>h3{text-align: center;color: #ddd}
-.lyricsWrap>.lyrics{margin-top: 20px;height: 50%;border: 1px solid yellow;overflow: hidden}
-.lyrics>.lines>p{color: #ddd}
+.lyricsWrap>h3{text-align: center;color: #ddd;font-size: 16px;}
+.lyricsWrap>.lyrics{margin-top: 10px;height: 50%;overflow: hidden}
+.lyrics>.lines{transition: all 1s}
+.lyrics>.lines>p{color: #ddd;margin-top: 6px;}
+.lyrics>.lines>p.active{font-size: 16px;color: #fff}
 
 
 .footer{width: 100%;padding:0 8px;display: flex;justify-content: space-between;}

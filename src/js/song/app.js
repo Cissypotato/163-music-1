@@ -47,13 +47,25 @@
         showlyrics(time){
             let allP=$(this.el).find('.lyrics>.lines>p')
             for(let i=0;i<allP.length;i++){
-                let currentTime=allP.eq(i).attr('data-time')
-                let nextTime=allP.eq(i+1).attr('data-time')
-                if(currentTime<=time && time<=nextTime){
-                    console.log(allP[i])
+                let p=allP[i]
+                if(i===allP.length-1){
+                    p=allP[i]
                     break
+                }else{
+                    let currentTime=allP.eq(i).attr('data-time')
+                    let nextTime=allP.eq(i+1).attr('data-time')
+                    if(currentTime<=time && time<=nextTime){
+                        
+                        let pHeight=p.getBoundingClientRect().top
+                        let linesHeight=$(this.el).find('.lyrics>.lines')[0].getBoundingClientRect().top
+                        let height=pHeight-linesHeight;
+                        $(this.el).find('.lyrics>.lines').css({
+                            'transform':`translateY(${-height+27}px)`
+                        })
+                        $(p).addClass('active').siblings('.active').removeClass('active')
+                        break
+                    }
                 }
-
             }
         }
         ,
