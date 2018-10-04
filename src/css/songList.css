@@ -1,0 +1,14 @@
+*{margin: 0;padding: 0}
+*{box-sizing: border-box;}
+*::before{box-sizing: border-box}
+*::after{box-sizing: border-box}
+
+a{color: inherit; text-decoration: none;}
+ul,ol{list-style: none;}
+h1,h2,h3,h4,h5,h6{ font-weight: normal; }
+img{width: 100%;height: 100%}
+
+body{font:14px/1.5 Helvetica,sans-serif;}
+
+
+section.songlistTittle{border: 1px solid red;padding: 30px 10px 30px 15px}

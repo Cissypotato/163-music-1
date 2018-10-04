@@ -1,14 +1,14 @@
 {
     let view={
         el:"#page-1",
-        init(){
-            this.$el=$(this.el)
-        },
+        // init(){
+        //     this.$el=$(this.el)
+        // },
         show(){
-            this.$el.addClass('active')
+            $(this.el).addClass('active')
         },
         hidden(){
-            this.$el.removeClass('active')
+            $(this.el).removeClass('active')
         }
 
     }
@@ -16,7 +16,7 @@
     let controller={
         init(view,model){
             this.view=view
-            this.view.init()
+            // this.view.init()
             this.model=model
             this.bindEventHub()
             this.loadMoudle1()
