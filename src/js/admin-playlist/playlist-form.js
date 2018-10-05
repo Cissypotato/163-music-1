@@ -2,46 +2,24 @@
     let view={
         el:".formWrapper",
         template:`
-            <form action="post" class="musicForm">
+            <form action="post" class="playlistForm">
                 <div class="inputs">
                     <div class="row">
                         <label>
-                            歌名                        
+                            歌单名                        
                         </label>
                         <input name="name" type="text" value="--name--">
                     </div>
+
                     <div class="row">
                         <label>
-                            歌手                        
-                        </label>
-                        <input name="singer" type="text" value="--singer--">
-                    </div>
-                    <div class="row">
-                        <label>
-                            外链                        
-                        </label>
-                        <input name="url" type="text" value="--url--">
-                    </div>
-                    <div class="row">
-                        <label>
-                           封面                        
+                           封面                       
                         </label>
                         <input name="cover" type="text" value="--cover--">
                     </div>
-                    <div class="row">
-                        <label>
-                           歌单                        
-                        </label>
-                        <input name="playlistId" type="text" value="--playlistId--">
-                    </div>
-                    <div class="row">
-                        <label>
-                           歌词                        
-                        </label>
-                        <textarea name="lyrics"  cols="30" rows="3">--lyrics--</textarea>
-                    </div>
+                    
                 </div>
-                
+
                 <div class="submitButton">
                     <button type="submit">保存</button>
                 </div>   
@@ -51,7 +29,7 @@
             this.$el=$(this.el)
         },
         render(data={}){
-            let palceHolder=['name','singer','url','id','cover','lyrics','playlistname']
+            let palceHolder=['name','cover']
             let html=this.template
             palceHolder.map((string)=>{
                 html=html.replace(`--${string}--`,data[string] ||'')
@@ -71,35 +49,25 @@
 
     let model={
         data:{
-            name:'',singer:'',url:"",id:'',cover:'',lyrics:'',playlistId:''
+            name:'',id:'',cover:''
         },
         update(data){
-            var song = AV.Object.createWithoutData('Song', this.data.id);
-            song.set('name', data.name);
-            song.set('url', data.url);
-            song.set('singer', data.singer);
-            song.set('cover', data.cover);
-            song.set('lyrics', data.lyrics);
-            return song.save()
+            var playlist = AV.Object.createWithoutData('Song', this.data.id);
+            playlist.set('name', data.name);
+            playlist.set('cover', data.cover);
+            return playlist.save()
                 .then((response)=>{
                     Object.assign(this.data,data)
                     return response
                 });
         },
         create(data){
-            // var GuangDong = AV.Object.createWithoutData('Province', '56545c5b00b09f857a603632');
-            // DongGuan.set('dependent', GuangDong);
-            var playlist = AV.Object.createWithoutData('playlist', this.data.playlistId);
-            var Song = AV.Object.extend('Song');
-            var song = new Song();
-            song.set('name', data.name);
-            song.set('singer', data.singer);
-            song.set('url', data.url);
-            song.set('cover', data.cover);
-            song.set('lyrics', data.lyrics);
-            song.set('dependent',playlist);
-            return song.save().then( (newSong)=> {
-                let{id,attributes}=newSong
+            var Playlist = AV.Object.extend('Playlist');
+            var playlist = new Playlist();
+            playlist.set('name', data.name);
+            playlist.set('cover', data.cover);
+            return playlist.save().then( (newPlaylist)=> {
+                let{id,attributes}=newPlaylist
                 Object.assign(this.data,{id,...attributes})
             }, (error) =>{
             // 异常处理
@@ -124,7 +92,7 @@
             window.eventHub.on('new',(data)=>{
                 if(this.model.data.id){
                     this.model.data={
-                        name:'',singer:'',url:"",id:'',cover:'',lyrics:''
+                        name:'',cover:''
                     }
                 }else{
                     Object.assign(this.model.data,data)
@@ -136,7 +104,7 @@
             this.view.render(data)
         },
         create(){
-            let needs='singer name url cover lyrics'.split(' ')
+            let needs='name cover'.split(' ')
             let data={}
             needs.map((string)=>{
                 data[string]=this.view.$el.find(`[name="${string}"]`).val()
@@ -151,7 +119,7 @@
         },
         update(){
             
-            let needs='singer name url cover lyrics'.split(' ')
+            let needs='name cover'.split(' ')
             let data={}
             needs.map((string)=>{
                 data[string]=this.view.$el.find(`[name="${string}"]`).val()

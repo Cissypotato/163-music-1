@@ -33,14 +33,17 @@
                 this.$el.find('.latestSongList').append($a)
             })
             
+            
         }
     }
+
     let model={
         data:{
             songs:[]
         },
         find(){
             var query = new AV.Query('Song');
+            
             return query.find().then( (songs)=> {
                 this.data.songs=songs.map((song)=>{
                     // return Object.assign({id:song.id},song.attributes)
@@ -48,8 +51,10 @@
                 })
                 return songs
             })
+            
         }
     }
+
     let controller={
         init(view,model){
             this.view=view
@@ -66,4 +71,4 @@
 
     controller.init(view,model)
 }
-//
+////
