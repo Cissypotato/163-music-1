@@ -51,7 +51,7 @@
             this.$el=$(this.el)
         },
         render(data={}){
-            let palceHolder=['name','singer','url','id','cover','lyrics','playlistname']
+            let palceHolder=['name','singer','url','id','cover','lyrics','playlistId']
             let html=this.template
             palceHolder.map((string)=>{
                 html=html.replace(`--${string}--`,data[string] ||'')
@@ -124,7 +124,7 @@
             window.eventHub.on('new',(data)=>{
                 if(this.model.data.id){
                     this.model.data={
-                        name:'',singer:'',url:"",id:'',cover:'',lyrics:''
+                        name:'',singer:'',url:"",id:'',cover:'',lyrics:'',playlistId:''
                     }
                 }else{
                     Object.assign(this.model.data,data)
@@ -136,7 +136,7 @@
             this.view.render(data)
         },
         create(){
-            let needs='singer name url cover lyrics'.split(' ')
+            let needs='singer name url cover lyrics playlistId'.split(' ')
             let data={}
             needs.map((string)=>{
                 data[string]=this.view.$el.find(`[name="${string}"]`).val()
@@ -151,7 +151,7 @@
         },
         update(){
             
-            let needs='singer name url cover lyrics'.split(' ')
+            let needs='singer name url cover lyrics playlistId'.split(' ')
             let data={}
             needs.map((string)=>{
                 data[string]=this.view.$el.find(`[name="${string}"]`).val()

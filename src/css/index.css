@@ -47,6 +47,7 @@ header>nav>ul>li>div.active{color: #d33a31;border-bottom: 2px solid #d33a31;}
 /* remd-ul{width: 1rem;display: flex;justify-content:space-between} */
 .playlists>a{display: block;width: 0.328rem;border: 1px solid red}
 .playlistCover{width: 0.328rem;height:0.328rem;position: relative; }
+/* .playlistCover>img{background-image: url(http://p9jn3e4j0.bkt.clouddn.com/song1.jpg) center center;height: 100%} */
 .playlistCover>p{position: absolute;top: 2px;right: 5px;z-index: 1;color: #fff;font-size: 12px;}
 .playlistCover>p>svg.headset{fill: #fff;width: 12px;height: 12px;}
 

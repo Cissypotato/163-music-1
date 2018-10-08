@@ -3,17 +3,17 @@
     let view={
         el:'section.remdPlaylist',
         template:`
-        <a href="songList.html?id={{songlist.id}}">
+        <a href="songList.html?id={{playlist.id}}">
             <div class="playlistCover">
                 <img  alt="">
                 <p>
                     <svg class="icon headset" aria-hidden="true">
                         <use xlink:href="#icon-1"></use>
                     </svg>
-                    132万
+                    {{playlist.number}}万
                 </p>                           
             </div>
-            <p>{{songlist.summary}}</p>
+            <p>{{playlist.name}}</p>
         </a>
             
         `,
@@ -26,10 +26,13 @@
             playlists.map((playlist)=>{
                 let $a=$(this.template
                 .replace('{{playlist.name}}',playlist.name)
-                .replace('{{playlist.id}}',playlist.id))
+                .replace('{{playlist.id}}',playlist.id)
+                .replace('{{playlist.number}}',playlist.number))
                 
-                $a.find('.playlistCover>img').css('background-image',`url(${playlist.cover})`)
-                this.$el.find('.latestSongList').append($a)
+                $a.find('.playlistCover>img').css({'background':`url(${playlist.cover})`,"background-size":"100%"})
+                console.log(playlist.cover)
+                // $a.find('.playlistCover>img').attr("src:"+playlist.cover)
+                this.$el.find('.playlists').append($a)
             })
            
         }
@@ -41,7 +44,7 @@
         },
         find(){
            
-            var query = new AV.Query('Song');
+            var query = new AV.Query('Playlist');
             return query.find().then( (playlists)=> {
                 this.data.playlists=playlists.map((playlist)=>{
                     // return Object.assign({id:song.id},song.attributes)

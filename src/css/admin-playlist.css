@@ -36,9 +36,9 @@ body{font-size: 12px;line-height: 1.5;;height:100vh;background: url(../images/ta
 
 
 /* songlist */
-.songList-container{width: 80%;margin-left: auto;margin-right: auto;margin-top: 20px;}
-.songList>li{padding: 5px;background: rgba(103,125,131,0.1);margin-top: 5px;color: #304558}
-.songList>li.active{background: rgba(103,125,131,0.2)}
+.playLists-container{width: 80%;margin-left: auto;margin-right: auto;margin-top: 20px;border: 1px solid red}
+.playLists>li{padding: 5px;background: rgba(103,125,131,0.1);margin-top: 5px;color: #304558}
+.playLists>li.active{background: rgba(103,125,131,0.2)}
 
 
 /* newsong */

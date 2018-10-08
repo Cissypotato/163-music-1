@@ -1,20 +1,21 @@
 {
     let view={
-        el:".songList-container",
+        el:".playLists-container",
         template:`
-            <ul class="songList">
+            <ul class="playLists">
             </ul>
         `,
         render(data){
             let $el=$(this.el)
             $el.html(this.template)
-            let{songs,selectedSongId}=data
-            let liList=songs.map((song)=>{
+            let{playlists,selectedPlaylistId}=data
+            let liList=playlists.map((playlist)=>{
 
-                let $li=$("<li></li>").text(song.name).attr('data-song-id',song.id)
-                if(song.id===selectedSongId){$li.addClass('active')}
+                let $li=$("<li></li>").text(playlist.name).attr('data-playlist-id',playlist.id)
+                if(playlist.id===selectedPlaylistId){$li.addClass('active')}
                 return $li
             })
+            console.log(liList)
             
             $el.find('ul').empty()
             liList.map((domLi=>{
@@ -31,17 +32,20 @@
 
     let model={
         data:{
-            songs:[],
-            selectedSongId:null
+            playlists:[],
+            selectedPlaylistId:null
         },
         find(){
-            var query = new AV.Query('Song');
-            return query.find().then( (songs)=> {
-                this.data.songs=songs.map((song)=>{
-                    return {id:song.id,...song.attributes}
+            var query = new AV.Query('Playlist');
+            console.log(query)
+            return query.find().then((playlists)=> {
+                console.log(playlists)
+                this.data.playlists=playlists.map((playlist)=>{
+                    return {id:playlist.id,...playlist.attributes}
                 })
-                return songs
+                return playlists
             })
+            console.log(233)
         }
     }
 
@@ -52,28 +56,28 @@
             this.view=view
             this.model=model
             this.view.render(this.model.data)
-            this.getAllSongs()
+            this.getAllPlaylists()
             this.bindEvents()
             this.bindEventHub()
                
         },
-        getAllSongs(){
+        getAllPlaylists(){
             return this.model.find().then(()=>{
                 this.view.render(this.model.data)
             })
         },
         bindEvents(){
             $(this.view.el).on('click','li',(e)=>{
-                let songId=e.currentTarget.getAttribute('data-song-id')
-                this.model.data.selectedSongId=songId
+                let playlistId=e.currentTarget.getAttribute('data-playlist-id')
+                this.model.data.selectedPlaylistId=playlistId
                 this.view.render(this.model.data)
 
                 let data
-                let songs=this.model.data.songs
+                let playlists=this.model.data.playlists
                
-                for(let i=0;i<songs.length;i++){
-                    if(songs[i].id===songId){
-                        data=songs[i]
+                for(let i=0;i<playlists.length;i++){
+                    if(playlists[i].id===playlistId){
+                        data=playlists[i]
                         break
                     }
                 }
@@ -85,19 +89,19 @@
             })
         },
         bindEventHub(){
-            window.eventHub.on('create',(songData)=>{
-                this.model.data.songs.push(songData);
+            window.eventHub.on('create',(playlistData)=>{
+                this.model.data.playlists.push(playlistData);
                 this.view.render(this.model.data)
 
             })
             window.eventHub.on('new',()=>{
                 this.view.clearActive()
             })
-            window.eventHub.on('update',(song)=>{
-                let songs=this.model.data.songs
-                for(i=0;i<songs.length;i++){
-                    if(songs[i].id===song.id){
-                        Object.assign(songs[i],song)
+            window.eventHub.on('update',(playlist)=>{
+                let playlists=this.model.data.playlists
+                for(i=0;i<playlists.length;i++){
+                    if(playlists[i].id===playlist.id){
+                        Object.assign(playlists[i],playlist)
                     }
                 }
                 this.view.render(this.model.data)
