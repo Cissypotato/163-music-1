@@ -11,4 +11,7 @@ img{width: 100%;height: 100%}
 body{font:14px/1.5 Helvetica,sans-serif;}
 
 
-section.songlistTittle{border: 1px solid red;padding: 30px 10px 30px 15px}
+section.songlistTittle{border: 1px solid red;padding: 30px 10px 30px 15px;width: 100%;display: flex}
+.songlistTittle>.listCover{width: 0.336rem;height: 0.336rem;border: 1px solid green}
+.listCover>p{position: absolute;top: 2px;right: 5px;z-index: 1;color: #fff;font-size: 12px;}
+.songlistTittle>.listTitle{margin-left: 16px;color: #fff;background: #777;font-size: 14px;letter-spacing: 0.1em}
