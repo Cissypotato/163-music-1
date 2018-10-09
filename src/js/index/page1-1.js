@@ -21,7 +21,6 @@
             this.$el=$(this.el)
         },
         render(data){
-            console.log(1)
             let {playlists}= data
             playlists.map((playlist)=>{
                 let $a=$(this.template

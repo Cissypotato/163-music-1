@@ -8,10 +8,39 @@ ul,ol{list-style: none;}
 h1,h2,h3,h4,h5,h6{ font-weight: normal; }
 img{width: 100%;height: 100%}
 
+.icon {
+    width: 12px; height: 12px;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
+
 body{font:14px/1.5 Helvetica,sans-serif;}
 
 
-section.songlistTittle{border: 1px solid red;padding: 30px 10px 30px 15px;width: 100%;display: flex}
-.songlistTittle>.listCover{width: 0.336rem;height: 0.336rem;border: 1px solid green}
-.listCover>p{position: absolute;top: 2px;right: 5px;z-index: 1;color: #fff;font-size: 12px;}
-.songlistTittle>.listTitle{margin-left: 16px;color: #fff;background: #777;font-size: 14px;letter-spacing: 0.1em}
+section.songlistTittle{border: 1px solid red;padding: 30px 10px 30px 15px;width: 100%;display: flex;position: relative;overflow: hidden}
+.songlistTittlec{width: 100%;height: 110%;position: absolute;top: 0;right: 0;bottom: 0;left: 0;filter: blur(10px);z-index: 1}
+/* .songlistTittlec:after{content: '';display: block;background: rgba(0,0,0,0.25);width: 100%;height: 110%;
+    position: absolute;top: 0;height: 0;} */
+.listCover{width: 0.336rem;height: 0.336rem;border: 1px solid green;z-index: 2;position: relative}
+.listCover>div{position: absolute;top: 2px;right: 5px;z-index: 1;color: #fff;font-size: 12px;display: flex}
+/* .listCover>p>. */
+.songlistTittle>.listTitle{margin-left: 16px;color: #fff;font-size: 16px;letter-spacing: 0.1em;z-index: 2}
+
+.introPart{margin: 0px 10px 0px 15px;padding-top: 10px;line-height: 19px;color: #666;border:1px solid red}
+
+
+.listPart{margin-top: 20px;}
+.listPart>h2{font-size: 12px;padding-left: 9px;margin-bottom: 14px;height: 23px;line-height: 23px;color: #666;
+    background: #eee;padding: 0 10px
+}
+/* .latestSongs>h2::before{content:'';position: absolute;width: 2px;height: 16px;background: #d33a31;top: 1px;left: 0} */
+
+.songRaw{display:block;width: 0.97rem;margin-left: 0.03rem;border-bottom: 1px solid #ccc;display: flex}
+.songRaw>.songWrapper{padding: 6px 0;width: 88.5%;}
+.songName{font-size: 17px;}
+.singer{font-size: 12px;color: #888;display: flex;align-items: center}
+.singer>svg.sq{width: 16px;height: 16px;margin-right:4px;}
+
+.playBtn{width:11.5%;display: flex;justify-content: center;align-items: center;}
+.playBtn>svg{width: 22px;height: 22px;fill: rgb(170, 170, 170); }

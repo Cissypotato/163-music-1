@@ -24,6 +24,18 @@
                         </label>
                         <input name="number" type="text" value="--number--">
                     </div>
+                    <div class="row">
+                        <label>
+                           标签                       
+                        </label>
+                        <input name="tag" type="text" value="--tag--">
+                    </div>
+                    <div class="row">
+                        <label>
+                           简介                       
+                        </label>
+                        <textarea name="summary" value="--summary--" cols="30" rows="3"></textarea>
+                    </div>
                 </div>
 
                 <div class="submitButton">
@@ -35,7 +47,7 @@
             this.$el=$(this.el)
         },
         render(data={}){
-            let palceHolder=['name','cover','number']
+            let palceHolder=['name','cover','number','tag','summary']
             let html=this.template
             palceHolder.map((string)=>{
                 html=html.replace(`--${string}--`,data[string] ||'')
@@ -55,13 +67,15 @@
 
     let model={
         data:{
-            name:'',id:'',cover:'',number:''
+            name:'',id:'',cover:'',number:'',tag:'',summary:''
         },
         update(data){
             var playlist = AV.Object.createWithoutData('Playlist', this.data.id);
             playlist.set('name', data.name);
             playlist.set('cover', data.cover);
             playlist.set('number', data.number);
+            playlist.set('tag', data.tag);
+            playlist.set('summary', data.summary);
             return playlist.save()
                 .then((response)=>{
                     Object.assign(this.data,data)
@@ -74,6 +88,8 @@
             playlist.set('name', data.name);
             playlist.set('cover', data.cover);
             playlist.set('number', data.number);
+            playlist.set('tag', data.tag);
+            playlist.set('summary', data.summary);
             return playlist.save().then( (newPlaylist)=> {
                 let{id,attributes}=newPlaylist
                 Object.assign(this.data,{id,...attributes})
@@ -100,7 +116,7 @@
             window.eventHub.on('new',(data)=>{
                 if(this.model.data.id){
                     this.model.data={
-                        name:'',cover:'',number:''
+                        name:'',cover:'',number:'',tag:'',summary:''
                     }
                 }else{
                     Object.assign(this.model.data,data)
@@ -112,7 +128,7 @@
             this.view.render(data)
         },
         create(){
-            let needs='name cover number'.split(' ')
+            let needs='name cover numberb tag summary'.split(' ')
             let data={}
             needs.map((string)=>{
                 data[string]=this.view.$el.find(`[name="${string}"]`).val()
@@ -127,7 +143,7 @@
         },
         update(){
             
-            let needs='name cover number'.split(' ')
+            let needs='name cover number tag summary'.split(' ')
             let data={}
             needs.map((string)=>{
                 data[string]=this.view.$el.find(`[name="${string}"]`).val()

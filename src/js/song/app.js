@@ -99,6 +99,7 @@
             
         },
         get(id){
+            
             var query = new AV.Query('Song');
             return query.get(id).then((song )=> {
                 
@@ -157,7 +158,7 @@
             if(search.indexOf("?")===0){
                 search=search.substring(1)
             }
-            
+
             let array=search.split('&').filter((v=>v))
             let id=""
             for(let i=0;i<array.length;i++){
