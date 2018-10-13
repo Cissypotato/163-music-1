@@ -74,12 +74,14 @@
             name:'',singer:'',url:"",id:'',cover:'',lyrics:'',playlistId:''
         },
         update(data){
-            var song = AV.Object.createWithoutData('Song', this.data.id);
+            // var playlist = AV.Object.createWithoutData('Playlist', this.data.playlistId);
+            var song = AV.Object.createWithoutData('Songs', this.data.id);
             song.set('name', data.name);
             song.set('url', data.url);
             song.set('singer', data.singer);
             song.set('cover', data.cover);
             song.set('lyrics', data.lyrics);
+            // song.set('dependent',playlist);
             return song.save()
                 .then((response)=>{
                     Object.assign(this.data,data)
@@ -89,9 +91,16 @@
         create(data){
             // var GuangDong = AV.Object.createWithoutData('Province', '56545c5b00b09f857a603632');
             // DongGuan.set('dependent', GuangDong);
-            var playlist = AV.Object.createWithoutData('playlist', this.data.playlistId);
-            var Song = AV.Object.extend('Song');
-            var song = new Song();
+            // var GuangDong = AV.Object.createWithoutData('Province', '5bba3f8e0b6160006a4f1b50');
+            // var DongGuan = new AV.Object('City');
+            // DongGuan.set('name', '东莞');
+            // DongGuan.set('dependent', GuangDong);
+            // DongGuan.save();
+            var playlist = AV.Object.createWithoutData('Playlist', data.playlistId);
+            console.log(data.playlistId)
+            console.log(playlist)
+            var song = new AV.Object('Songs');
+            // var song = new Song();
             song.set('name', data.name);
             song.set('singer', data.singer);
             song.set('url', data.url);
@@ -175,3 +184,33 @@
     }
     controller.init(view,model)
 }
+
+
+// var GuangZhou = new AV.Object('Playlist');// 广州
+// GuangZhou.set('name', '歌单1');
+// var GuangDong = new AV.Object('Song');// 广东
+// GuangDong.set('name', '歌曲1');
+// GuangZhou.set('dependent', GuangDong);// 为广州设置 dependent 属性为广东
+// GuangZhou.save().then(function (guangZhou) {
+//     console.log(guangZhou.id);
+// });
+// var GuangZhou = new AV.Object('Songs');// 广州
+//     GuangZhou.set('name', '歌曲11');
+//     var GuangDong = new AV.Object('Playlist');// 广东
+//     GuangDong.set('name', '歌单11');
+//     GuangZhou.set('dependent', GuangDong);// 为广州设置 dependent 属性为广东
+//     GuangZhou.save().then(function (guangZhou) {
+//         console.log(guangZhou.id);
+//     });
+
+// var GuangDong = AV.Object.createWithoutData('Playlist', '5bbf6a79808ca40072dcea03');
+// var DongGuan = new AV.Object('Songs');
+// DongGuan.set('name', '歌曲22');
+// DongGuan.set('dependent', GuangDong);
+// DongGuan.save();
+
+// var GuangDong = AV.Object.createWithoutData('Playlist', '5bba3c559f54540070db1b2a');
+//     var DongGuan = new AV.Object('Song');
+//     DongGuan.set('name', '2333');
+//     DongGuan.set('dependent', GuangDong);
+//     DongGuan.save();

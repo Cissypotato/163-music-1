@@ -3,7 +3,7 @@
         el:'#app',
         render(data){
             let {song,status}=data
-            $(this.el).css('background-image',`url(${song.cover})`)
+            $(this.el).find('.songPageBg').css('background-image',`url(${song.cover})`)
             $(this.el).find('.discCover').css('background-image',`url(${song.cover})`)
             $(this.el).find('.lyricsWrap>h3').text(song.name)
             if($(this.el).find('audio').attr('src')!==song.url){
@@ -60,7 +60,7 @@
                         let linesHeight=$(this.el).find('.lyrics>.lines')[0].getBoundingClientRect().top
                         let height=pHeight-linesHeight;
                         $(this.el).find('.lyrics>.lines').css({
-                            'transform':`translateY(${-height+27}px)`
+                            'transform':`translateY(${-height+30}px)`
                         })
                         $(p).addClass('active').siblings('.active').removeClass('active')
                         break
@@ -100,7 +100,7 @@
         },
         get(id){
             
-            var query = new AV.Query('Song');
+            var query = new AV.Query('Songs');
             return query.get(id).then((song )=> {
                 
                 Object.assign(this.data.song,{id:id,...song.attributes})

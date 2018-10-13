@@ -15,7 +15,7 @@ img{width: 100%;height: 100%}
     overflow: hidden;
   }
 
-body{font:14px/1.5 Helvetica,sans-serif;}
+body{font:14px/1.5 Helvetica,sans-serif;background: rgb(248, 248, 248)}
 
 
 section.songlistTittle{border: 1px solid red;padding: 30px 10px 30px 15px;width: 100%;display: flex;position: relative;overflow: hidden}
@@ -27,10 +27,14 @@ section.songlistTittle{border: 1px solid red;padding: 30px 10px 30px 15px;width:
 /* .listCover>p>. */
 .songlistTittle>.listTitle{margin-left: 16px;color: #fff;font-size: 16px;letter-spacing: 0.1em;z-index: 2}
 
-.introPart{margin: 0px 10px 0px 15px;padding-top: 10px;line-height: 19px;color: #666;border:1px solid red}
 
 
-.listPart{margin-top: 20px;}
+.introPart{margin: 0px 10px 0px 15px;padding-top: 10px;line-height: 19px;color: #666;}
+.listTag{margin-bottom: 10px}
+.listTag>span{padding-right:12px; }
+
+
+.listPart{margin-top: 20px;overflow: auto}
 .listPart>h2{font-size: 12px;padding-left: 9px;margin-bottom: 14px;height: 23px;line-height: 23px;color: #666;
     background: #eee;padding: 0 10px
 }
@@ -44,3 +48,10 @@ section.songlistTittle{border: 1px solid red;padding: 30px 10px 30px 15px;width:
 
 .playBtn{width:11.5%;display: flex;justify-content: center;align-items: center;}
 .playBtn>svg{width: 22px;height: 22px;fill: rgb(170, 170, 170); }
+
+
+footer{position: fixed;width: 100%;left: 0;bottom: 0;display: flex;padding: 7px 30px;background: #fff}
+footer>a{background: rgb(211,58,49);color: #fff;padding: 0 6px;font-size: 16px;height: 0.10667rem;
+     line-height:0.10667rem;flex: 1 1 auto;border-radius: 20px;display: flex;
+     align-items: center ;justify-content: center}
+.footerLogo{fill: #fff;width: 20px;height: 20px;}

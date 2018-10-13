@@ -5,10 +5,14 @@
             
             let {playlist}=data
             // $(this.el).css({backgroundImage:`url(${playlist.cover})`})
-            $(this.el).find('.songlistTittlec').css({backgroundImage:`url(${playlist.cover})`})
-            $(this.el).find('.listCover').css({background:`url(${playlist.cover})`,backgroundSize:'cover'})
-            $(this.el).find('.clicknumber').html(`${playlist.number}万`)
-            $(this.el).find('.listTitle').html(playlist.name)
+            let string=playlist.tag
+            
+            let array=string.split(' ')
+            console.log(array)
+            for(let i=0;i<array.length;i++){
+                $(this.el).find('.listTag').append(`<span>${array[i]}</span>`)
+            }
+            $(this.el).find('.listSummary').html(`简介：${playlist.summary}`)
 
             
             // $(this.el).find('.discCover').css('background-image',`url(${playlist.cover})`)
@@ -33,10 +37,8 @@
         data:{
             playlist:{
                 id:'',
-                cover:'',
-                name:'',
-                number:'',
-                
+                tag:'',
+                summary:'',    
             },
             
         },
