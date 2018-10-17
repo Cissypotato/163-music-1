@@ -128,7 +128,7 @@
             this.view.render(data)
         },
         create(){
-            let needs='name cover numberb tag summary'.split(' ')
+            let needs='name cover number tag summary'.split(' ')
             let data={}
             needs.map((string)=>{
                 data[string]=this.view.$el.find(`[name="${string}"]`).val()

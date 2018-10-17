@@ -34,7 +34,7 @@ section.songlistTittle{border: 1px solid red;padding: 30px 10px 30px 15px;width:
 .listTag>span{padding-right:12px; }
 
 
-.listPart{margin-top: 20px;overflow: auto}
+.listPart{margin-top: 20px;overflow: auto;margin-bottom: 0.144rem}
 .listPart>h2{font-size: 12px;padding-left: 9px;margin-bottom: 14px;height: 23px;line-height: 23px;color: #666;
     background: #eee;padding: 0 10px
 }

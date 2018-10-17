@@ -7,20 +7,20 @@ a{color: inherit; text-decoration: none;}
 ul,ol{list-style: none;}
 h1,h2,h3,h4,h5,h6{ font-weight: normal; }
 img{width: 100%;height: 100%}
-body{font:14px/1.5 Helvetica,sans-serif;}
+body{font:14px/1.5 Helvetica,sans-serif;background-size:100%;overflow: auto; }
 
 @keyframes circle{
     0%{transform: rotate(0deg)}
     100%{transform: rotate(360deg)}
 }
-.app{position: relative;width: 100%;height: 100%}
+.app{position: relative;width: 100%;height:100vh;overflow: hidden}
 
-.songPageBg{width: 100%;height:100%;position: absolute;background-size: auto 100%;background-position:50% ;
-    transform:scale(1.5);transform-origin: center top;background-repeat: no-repeat;z-index: -1 ;opacity: 1;overflow: hidden}
-.songPageBg::after{content: '';display: block;width: 100%;height: 100%;top: 0;left: 0;background: rgba(0,0,0,0.5);
-    position: absolute;overflow: hidden;z-index: -1}
+.songPageBg{width: 100%;position: absolute;background-size: auto 100%;background-position:50% ;height:100vh;overflow: hidden;
+    transform:scale(1.5);transform-origin: center top;background-repeat: no-repeat;z-index: -1 ;opacity: 1;filter: blur(20px);}
+.songPageBg::after{content: '';display: block;width: 100%;height: 100vh;top: 0;left: 0;background: rgba(0,0,0,0.6);
+    position: absolute;overflow: hidden;z-index:1}
 
-.songPage{position:relative;width: 100%;height: 100%;left: 0;top: 0;}
+.songPage{position:relative;width: 100%;;left: 0;top: 0;height: 100vh;z-index: 2}
 .discWrap{width: 100%;height: 1.587rem;position: relative;border: 1px solid green;z-index: 2;transform: scale(1.0)}
 .discWrap::before{content: '';display: block;width: 0.256rem;height: 0.365rem;position: absolute;background: url(../images/needle.png) no-repeat;
     background-position: center center;background-size: contain;left: 155px;
@@ -39,7 +39,7 @@ body{font:14px/1.5 Helvetica,sans-serif;}
 .playBtn>svg.icon{width:0.149rem;height: 0.149rem;fill: #ddd;}
 .playBtn.paused{display: block}
 .discCover>.puaseBtn{display:flex;width: 0.149rem;height: 0.149rem;justify-content: center;align-items: center;display: block; z-index: 6}
-.puaseBtn>svg.icon{width:0.149rem;height: 0.149rem;fill: #ddd;}
+.puaseBtn>svg.icon{width:0.149rem;height: 0.149rem;fill: #ddd;z-index: 22}
 .puaseBtn.playing{display: none}
 
 .lyricsWrap{border: 1px solid red;padding: 10px 20px;text-align: center;z-index: 20;height: 197px}/* height: 0.5253rem; */

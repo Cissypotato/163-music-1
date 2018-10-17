@@ -42,10 +42,14 @@ header>nav>ul>li>div.active{color: #d33a31;border-bottom: 2px solid #d33a31;}
 .remdPlaylist>h2{font-size: 17px;padding-left: 9px;margin-bottom: 14px;height: 20px;line-height: 20px;position: relative;
   }
 .remdPlaylist>h2::before{content:'';position: absolute;width: 2px;height: 16px;background: #d33a31;top: 1px;left: 0}
+.remdPlaylist>.playlists>a{padding-bottom: 12px}
+.remdPlaylist>.playlists>a>p{padding:6px 2px 0px 6px;font-size: 13px}
+
+
 .playlists{width: 1rem;display: flex;justify-content:space-between;flex-wrap: wrap;}
 
 /* remd-ul{width: 1rem;display: flex;justify-content:space-between} */
-.playlists>a{display: block;width: 0.328rem;border: 1px solid red}
+.playlists>a{display: block;width: 0.328rem}
 .playlistCover{width: 0.328rem;height:0.328rem;position: relative; }
 /* .playlistCover>img{background-image: url(http://p9jn3e4j0.bkt.clouddn.com/song1.jpg) center center;height: 100%} */
 .playlistCover>p{position: absolute;top: 2px;right: 5px;z-index: 1;color: #fff;font-size: 12px;}
