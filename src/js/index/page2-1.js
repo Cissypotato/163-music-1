@@ -1,8 +1,9 @@
 {
     let view={
-        el:'section.latestSongs',
+        el:'.hotSongList',
         template:`
         <a class="songRaw" href="song.html?id={{song.id}}">
+            <div class="sort">{{number}}</div>
             <div class="songWrapper">
                 <div class="songName">{{song.name}}</div>
                 <div class="singer">
@@ -25,30 +26,20 @@
         },
         render(data){
             let {songs}=data
+            let number=0
             songs.map((song)=>{
+                number+=1
                 let $a=$(this.template
+                .replace('{{number}}',number)
                 .replace('{{song.name}}',song.name)
                 .replace('{{song.singer}}',song.singer)
                 .replace('{{song.id}}',song.id))
-                this.$el.find('.latestSongList').append($a)
+                this.$el.append($a)
             })
-
-
-            // let {songs}=data
-            // let number=0
-            // songs.map((song)=>{
-            //     number+=1
-            //     let $a=$(this.template
-            //     .replace('{{number}}',number)
-            //     .replace('{{song.name}}',song.name)
-            //     .replace('{{song.singer}}',song.singer)
-            //     .replace('{{song.id}}',song.id))
-            //     this.$el.append($a)
-            // })
-            // let children=this.$el.children()
-            // for(let i=0;i<3;i++){
-            //     $(children[i]).find('.sort').css('color','red')
-            // }
+            let children=this.$el.children()
+            for(let i=0;i<3;i++){
+                $(children[i]).find('.sort').css('color','red')
+            }
 
             
             
@@ -80,7 +71,7 @@
             this.view=view
             this.view.init()
             this.model=model
-            let id="5bc9fb429f54540070a84930"
+            let id="5bc995720b6160006a14bca9"
             this.model.find(id).then(()=>{
                 this.view.render(this.model.data)
             })
@@ -89,4 +80,24 @@
 
     controller.init(view,model)
 }
+
+
 ////
+    // var GuangZhou = new AV.Object('City');// 广州
+    // GuangZhou.set('name', '广州');
+    // var GuangDong = new AV.Object('Province');// 广东
+    // GuangDong.set('name', '广东');
+    // GuangZhou.set('dependent', GuangDong);// 为广州设置 dependent 属性为广东
+    // GuangZhou.save().then(function (guangZhou) {
+    //     console.log(guangZhou.id);
+    // });
+
+
+    // var playlist = AV.Object.createWithoutData('Playlist', '5bba3c559f54540070db1b2a');
+    // var query = new AV.Query('Songs');
+    // query.equalTo('dependent', playlist);
+    // query.find().then(function (cities) {
+    //     cities.forEach(function (city, i, a) {
+    //         console.log(city.id);
+    //     });
+    // })

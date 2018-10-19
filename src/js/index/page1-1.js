@@ -27,7 +27,6 @@
                 .replace('{{playlist.name}}',playlist.name)
                 .replace('{{playlist.id}}',playlist.id)
                 .replace('{{playlist.number}}',playlist.number))
-                
                 $a.find('.playlistCover>img').css({'background':`url(${playlist.cover})`,"background-size":"100%"})
                 console.log(playlist.cover)
                 // $a.find('.playlistCover>img').attr("src:"+playlist.cover)
@@ -43,7 +42,12 @@
         },
         find(){
            
+            // var query = new AV.Query('Playlist');
+            // query.limit(3);
             var query = new AV.Query('Playlist');
+            var now = new Date();
+            query.lessThanOrEqualTo('createdAt', now);//查询今天之前创建的 Todo
+            query.limit(6);// 最多返回 10 条结果
             return query.find().then( (playlists)=> {
                 this.data.playlists=playlists.map((playlist)=>{
                     // return Object.assign({id:song.id},song.attributes)
@@ -51,6 +55,8 @@
                 })
                 return playlists
             })
+
+            
         }
 
     }
