@@ -145,8 +145,11 @@
             
             var query = new AV.Query('Playlist');
             return query.get(id).then((playlist )=> {
-                
-                Object.assign(this.data.playlist,{id:id,...playlist.attributes})
+                console.log(233)
+                console.log(playlist.attributes)
+                this.data.playlist.id=id
+                Object.assign(this.data.playlist,playlist.attributes)
+
                 return playlist
             })
         },

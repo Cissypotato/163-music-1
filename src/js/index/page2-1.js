@@ -55,9 +55,10 @@
             var song = new AV.Query('Songs');
             song.equalTo('dependent',playlist);
             return song.find().then((songs)=>{
-                console.log(songs)
+                // console.log(songs)
                 this.data.songs=songs.map((song)=>{
-                    return {id:song.id,...song.attributes}
+                    // return {id:song.id,...song.attributes}
+                    return Object.assign({id:song.id},song.attributes)
                 })
                 return songs
             });

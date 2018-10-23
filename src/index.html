@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <title>我的音乐</title>
+    <title>土豆音乐</title>
     <script>
         var pageWidth=window.innerWidth
         document.write("<style>html{font-size:"+pageWidth+"px}</style>")
@@ -79,7 +79,7 @@
             <div class="openApp">
                 <a href="http://m.music.163.com/m/applink/?scheme=orpheus%3A%2F%2Fhome%3Fhome">打开APP，发现更多好音乐 ></a>
             </div>
-            <p>网易公司版权所有©1997-2018   杭州乐读科技有限公司运营</p>
+            <p>大土豆公司版权所有©1997-2018   上海土豆科技有限公司运营</p>
         </footer>
     </div>
     
@@ -120,6 +120,20 @@
     </div>
 
 
+    <script src="js\initializers\vconsole.min.js"></script>
+    <script>
+        // init vConsole
+        
+        var vConsole = new VConsole();
+        window.onerror=function(message,file,row){
+       
+            console.log(message);
+            console.log(file);
+            console.log(row);
+    }
+        
+        
+    </script> 
     <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.7.2/dist/av-min.js"></script> 
     <script src="js/initializers/av.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

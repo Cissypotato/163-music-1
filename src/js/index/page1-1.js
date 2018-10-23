@@ -50,8 +50,8 @@
             query.limit(6);// 最多返回 10 条结果
             return query.find().then( (playlists)=> {
                 this.data.playlists=playlists.map((playlist)=>{
-                    // return Object.assign({id:song.id},song.attributes)
-                    return {id:playlist.id,...playlist.attributes}
+                    return Object.assign({id:playlist.id},playlist.attributes)
+                    // return {id:playlist.id,...playlist.attributes}
                 })
                 return playlists
             })
@@ -72,12 +72,13 @@
                 console.log(3)
                 this.view.render(this.model.data)
             })
-            this.bindEvents()
+            // this.bindEvents()
             console.log(5)
         },
-        bindEvents(){},
+        // bindEvents(){},
 
     }
 
     controller.init(view,model)
+
 }

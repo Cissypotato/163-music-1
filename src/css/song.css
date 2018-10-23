@@ -20,8 +20,8 @@ body{font:14px/1.5 Helvetica,sans-serif;background-size:100%;overflow: auto; }
 .songPageBg::after{content: '';display: block;width: 100%;height: 100vh;top: 0;left: 0;background: rgba(0,0,0,0.6);
     position: absolute;overflow: hidden;z-index:1}
 
-.songPage{position:relative;width: 100%;;left: 0;top: 0;height: 100vh;z-index: 2}
-.discWrap{width: 100%;height: 1.587rem;position: relative;z-index: 2;transform: scale(1.0)}
+.songPage{position:relative;width: 100%;;left: 0;top: 0;height: 100vh;z-index: 2;}
+.discWrap{width: 100%;height: 1.587rem;position: relative;z-index: 2;transform: scale(1.0);border-top: 0.1px solid  ;}
 .discWrap::before{content: '';display: block;width: 0.256rem;height: 0.365rem;position: absolute;background: url(../images/needle.png) no-repeat;
     background-position: center center;background-size: contain;left: 155px;
     z-index: 3}
@@ -42,16 +42,16 @@ body{font:14px/1.5 Helvetica,sans-serif;background-size:100%;overflow: auto; }
 .puaseBtn>svg.icon{width:0.149rem;height: 0.149rem;fill: #ddd;z-index: 22}
 .puaseBtn.playing{display: none}
 
-.lyricsWrap{padding: 10px 20px;text-align: center;z-index: 20;height: 197px;margin-top: 20px;}/* height: 0.5253rem; */
+.lyricsWrap{padding: 10px 20px;text-align: center;z-index: 20;height: 197px;margin-top: 16px;}/* height: 0.5253rem; */
 .lyricsWrap>h3{text-align: center;color: #ddd;font-size: 18px;}
-.lyricsWrap>.lyrics{margin-top: 10px;height: 50%;overflow: hidden;font-size: 16px;}
+.lyricsWrap>.lyrics{margin-top: 6px;height: 43%;overflow: hidden;font-size: 16px;border: 1px solid red}
 .lyrics>.lines{transition: all 0.5s}
-.lyrics>.lines>p{color: #ccc;margin-top: 6px;z-index: 20}
+.lyrics>.lines>p{color: #ccc;z-index: 20;margin-top:2px;}
 .lyrics>.lines>p.active{color: #fff}
 
 
-.footer{width: 100%;padding:0 8px;display: flex;justify-content: space-between;position: absolute;bottom: 0.11733rem}
-.footer>span{display: inline-block;width: 47%;text-align: center;
+.footer{width: 100%;padding:0 8px;display: flex;justify-content: space-between;position: absolute;bottom:16px}/* 0.11733rem*/
+.footer>span{display: inline-block;width: 47%;text-align: center;z-index: 2;
     height: 40px;line-height: 40px;font-size: 18px;border-radius: 40px;}
 .footer>span.open{color: #d33a31;border: 1px solid  #d33a31}
 .footer>span.download{background: #d33a31;color: #fff;}

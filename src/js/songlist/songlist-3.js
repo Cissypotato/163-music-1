@@ -50,7 +50,8 @@
             return song.find().then((songs)=>{
                 console.log(songs)
                 this.data.songs=songs.map((song)=>{
-                    return {id:song.id,...song.attributes}
+                    // return {id:song.id,...song.attributes}
+                    return Object.assign({id:song.id},song.attributes)
                 })
                 return songs
                 // cities.forEach(function (city, i, a) {
