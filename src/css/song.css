@@ -44,7 +44,7 @@ body{font:14px/1.5 Helvetica,sans-serif;background-size:100%;overflow: auto; }
 
 .lyricsWrap{padding: 10px 20px;text-align: center;z-index: 20;height: 197px;margin-top: 16px;}/* height: 0.5253rem; */
 .lyricsWrap>h3{text-align: center;color: #ddd;font-size: 18px;}
-.lyricsWrap>.lyrics{margin-top: 6px;height: 43%;overflow: hidden;font-size: 16px;border: 1px solid red}
+.lyricsWrap>.lyrics{margin-top: 6px;height: 43%;overflow: hidden;font-size: 16px;}
 .lyrics>.lines{transition: all 0.5s}
 .lyrics>.lines>p{color: #ccc;z-index: 20;margin-top:2px;}
 .lyrics>.lines>p.active{color: #fff}
