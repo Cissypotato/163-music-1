@@ -19,9 +19,9 @@ body{font:14px/1.5 Helvetica,sans-serif;background: rgb(248, 248, 248)}
 
 
 section.songlistTittle{padding: 30px 10px 30px 15px;width: 100%;display: flex;position: relative;overflow: hidden}
-.songlistTittlec{width: 100%;height: 110%;position: absolute;top: 0;right: 0;bottom: 0;left: 0;filter: blur(10px);z-index: 1}
-/* .songlistTittlec:after{content: '';display: block;background: rgba(0,0,0,0.25);width: 100%;height: 110%;
-    position: absolute;top: 0;height: 0;} */
+.songlistTittlec{width: 120%;height: 120%;position: absolute;top:-20px;left: 0;filter: blur(10px);z-index: 1}
+.songlistTittlec:after{content: '';display: block;background: rgba(0,0,0,0.5);width: 100%;
+    position: absolute;top: 0;height: 120%;}
 .listCover{width: 0.336rem;height: 0.336rem;z-index: 2;position: relative}
 .listCover>div{position: absolute;top: 2px;right: 5px;z-index: 1;color: #fff;font-size: 12px;display: flex}
 /* .listCover>p>. */
